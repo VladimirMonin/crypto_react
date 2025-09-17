@@ -1,69 +1,217 @@
-# React + TypeScript + Vite
+# 🚀 Crypto Tracker React App
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Современное React-приложение для отслеживания криптовалют с красивым интерфейсом, темной темой и поддержкой избранного.
 
-Currently, two official plugins are available:
+![React](https://img.shields.io/badge/React-18-61DAFB?logo=react&logoColor=white)
+![TypeScript](https://img.shields.io/badge/TypeScript-5-3178C6?logo=typescript&logoColor=white)
+![Vite](https://img.shields.io/badge/Vite-5-646CFF?logo=vite&logoColor=white)
+![License](https://img.shields.io/badge/License-MIT-green)
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## ✨ Особенности
 
-## Expanding the ESLint configuration
+- 🎨 **Современный UI/UX** - Темная тема с синими акцентами и плавными анимациями
+- 📱 **Адаптивный дизайн** - Отлично работает на всех устройствах
+- ⭐ **Система избранного** - Добавляйте монеты в избранное с сохранением в localStorage
+- 🔍 **Умный поиск** - Быстрый поиск криптовалют и бирж
+- 🔥 **Трендовые монеты** - Актуальные трендовые криптовалюты
+- 📊 **Рыночные данные** - Цены, капитализация, изменения за 24 часа
+- 🔐 **Безопасность API** - Настройка собственного API ключа
+- 💾 **Локальное хранение** - Избранное и настройки сохраняются локально
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+## 🛠️ Технологии
 
-```js
-export default tseslint.config([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
+- **Frontend**: React 18, TypeScript
+- **Сборка**: Vite
+- **Стили**: Модульный CSS
+- **API**: CoinGecko API
+- **Хранение**: localStorage
+- **Линтинг**: ESLint
 
-      // Remove tseslint.configs.recommended and replace with this
-      ...tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      ...tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      ...tseslint.configs.stylisticTypeChecked,
+## 📦 Установка и запуск
 
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+### Предварительные требования
+
+- Node.js >= 18
+- npm или yarn
+
+### Шаги установки
+
+1. **Клонируйте репозиторий**
+
+   ```bash
+   git clone https://github.com/ваш-username/crypto-tracker-react.git
+   cd crypto-tracker-react
+   ```
+
+2. **Установите зависимости**
+
+   ```bash
+   npm install
+   ```
+
+3. **Запустите приложение**
+
+   ```bash
+   npm run dev
+   ```
+
+4. **Откройте в браузере**
+
+   ```
+   http://localhost:5173
+   ```
+
+## 🔑 Настройка API ключа
+
+При первом запуске приложение попросит вас ввести API ключ от CoinGecko:
+
+1. Зарегистрируйтесь на [CoinGecko](https://www.coingecko.com/en/api)
+2. Получите бесплатный API ключ
+3. Введите его в появившемся окне настройки
+4. Ключ будет сохранен в localStorage
+
+## 📁 Структура проекта
+
+```
+src/
+├── components/           # React компоненты
+│   ├── ui/              # UI компоненты (кнопки, спиннеры)
+│   ├── CoinCard.tsx     # Карточка криптовалюты
+│   ├── Header.tsx       # Шапка приложения
+│   ├── Navigation.tsx   # Навигация по вкладкам
+│   ├── MarketSection.tsx    # Раздел рынка
+│   ├── TrendingSection.tsx  # Раздел трендов
+│   ├── SearchSection.tsx    # Раздел поиска
+│   └── FavoritesSection.tsx # Раздел избранного
+├── utils/               # Утилиты
+│   ├── cryptoApi.ts     # API для работы с CoinGecko
+│   ├── favorites.ts     # Управление избранным
+│   ├── apiKeyManager.ts # Управление API ключом
+│   └── formatters.ts    # Форматирование данных
+├── App.tsx             # Главный компонент
+└── main.tsx           # Точка входа
 ```
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+## 🎯 Функциональность
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
+### 📈 Рыночные данные
 
-export default tseslint.config([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+- Топ-100 криптовалют по капитализации
+- Актуальные цены и изменения за 24 часа
+- Рыночная капитализация и объемы торгов
+
+### 🔥 Тренды
+
+- Самые популярные криптовалюты
+- Трендовые категории
+- Динамика изменений
+
+### 🔍 Поиск
+
+- Поиск по названию или символу
+- Результаты с рыночными данными
+- Поиск бирж
+
+### ⭐ Избранное
+
+- Добавление/удаление монет в избранное
+- Сохранение в localStorage
+- Быстрый доступ к любимым монетам
+
+## 🎨 Дизайн-система
+
+### Цветовая палитра
+
+- **Основной фон**: `#0a0a0f`
+- **Вторичный фон**: `rgba(26, 26, 46, 0.8)`
+- **Акцентный цвет**: `#00d4ff`
+- **Текст**: `#ffffff`, `#a0a0a0`
+- **Успех**: `#00ff88`
+- **Ошибка**: `#ff4757`
+
+### Компоненты
+
+- Карточки с размытием фона (backdrop-filter)
+- Плавные анимации и переходы
+- Адаптивная сетка
+- Стилизованные аватары для монет
+
+## 🚀 Скрипты
+
+```bash
+# Разработка
+npm run dev
+
+# Сборка для продакшена
+npm run build
+
+# Предварительный просмотр сборки
+npm run preview
+
+# Линтинг
+npm run lint
 ```
+
+## 📱 Адаптивность
+
+Приложение оптимизировано для:
+
+- 📱 Мобильные устройства (320px+)
+- 📱 Планшеты (768px+)
+- 💻 Десктопы (1024px+)
+- 🖥️ Большие экраны (1440px+)
+
+## 🔧 Конфигурация
+
+### Vite
+
+Настроен для:
+
+- Hot Module Replacement (HMR)
+- TypeScript support
+- Оптимизация сборки
+- Развертывание на статических хостингах
+
+### TypeScript
+
+- Строгая типизация
+- Проверка типов на этапе сборки
+- IntelliSense поддержка
+
+## 🤝 Вклад в проект
+
+1. Сделайте форк проекта
+2. Создайте ветку для новой функции (`git checkout -b feature/AmazingFeature`)
+3. Зафиксируйте изменения (`git commit -m 'Add some AmazingFeature'`)
+4. Отправьте в ветку (`git push origin feature/AmazingFeature`)
+5. Откройте Pull Request
+
+## 📝 TODO
+
+- [ ] Добавить графики цен
+- [ ] Портфолио пользователя
+- [ ] Уведомления о ценах
+- [ ] Темная/светлая тема
+- [ ] Дополнительные языки
+- [ ] PWA поддержка
+
+## 📄 Лицензия
+
+Этот проект лицензирован под MIT License - см. файл [LICENSE](LICENSE) для деталей.
+
+## 🙏 Благодарности
+
+- [CoinGecko](https://www.coingecko.com/) за API
+- [React](https://reactjs.org/) команда
+- [Vite](https://vitejs.dev/) команда
+- Сообщество разработчиков
+
+## 📞 Контакты
+
+- **Автор**: Ваше имя
+- **Email**: <your.email@example.com>
+- **GitHub**: [@your-username](https://github.com/your-username)
+
+---
+
+⭐ **Поставьте звезду, если проект вам понравился!**
